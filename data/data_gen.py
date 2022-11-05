@@ -64,9 +64,9 @@ def gen_urand_3t(dims, nnz_percents, args):
                             for k in range(dim):
                                 rand1 = prng.random(1)[0]
                                 if rand1 <= nnz_percent:
-                                    ft1.write(str(i) + " " + str(j) + " " + str(k) + " 2\n")
+                                    ft1.write(str(i) + " " + str(j) + " " + str(k) + " 1.0\n")
                                 if prng.random(1)[0] <= nnz_percent:
-                                    ft2.write(str(i) + " " + str(j) + " " + str(k) + " 2\n")
+                                    ft2.write(str(i) + " " + str(j) + " " + str(k) + " 1.0\n")
 
 
 if __name__ == "__main__":
