@@ -23,7 +23,7 @@ def get_benchmark_ranges(bench_name):
     elif bench_name == "spmv":
         dim_range = list(range(0, 5001, 250))
         sp_range = [0.2, 0.4]
-    elif bench_name == "plus3t":
+    elif bench_name == "plus3t" or bench_name == "plus2m":
         dim_range = [200]
         sp_range = [.00625, .0125, .025, .05, .1, .2, .4, .8, 1]
     else:
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     else:
         dims, nnz_percents = get_benchmark_ranges(args.bench)
 
-    if args.bench in ["sddmm_dim", "sddmm_sp", "spmv"]:
+    if args.bench in ["sddmm_dim", "sddmm_sp", "spmv", "plus2m"]:
         gen_urand_mat(dims, nnz_percents, args)
     elif args.bench == "plus3t":
         gen_urand_3t(dims, nnz_percents, args)
