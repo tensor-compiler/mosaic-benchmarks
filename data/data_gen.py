@@ -26,6 +26,15 @@ def get_benchmark_ranges(bench_name):
     elif bench_name == "plus3t":
         dim_range = [200]
         sp_range = [.00625, .0125, .025, .05, .1, .2, .4, .8, 1]
+    elif bench_name == "plus3t":
+        dim_range = [200]
+        sp_range = [.00625, .0125, .025, .05, .1, .2, .4, .8, 1]
+    elif bench_name == "blockSp":
+        dim_range = list(range(100, 1001, 100))
+        sp_range = [0.05, 0.1]
+    elif bench_name == "mmAdd":
+        dim_range = list(range(100, 1001, 100))
+        sp_range = [.00625, .0125, .025, .05, .1, .2, .4, .8, 1]
     else:
         raise NotImplementedError
     return dim_range, sp_range
@@ -68,6 +77,49 @@ def gen_urand_3t(dims, nnz_percents, args):
                                 if prng.random(1)[0] <= nnz_percent:
                                     ft2.write(str(i) + " " + str(j) + " " + str(k) + " 1.0\n")
 
+def gen_urand_2t(dims, nnz_percents, args):
+    assert args.bench == "mmAdd"
+
+    out_dir_path = os.path.join(args.out_dir, args.bench)
+    os.makedirs(Path(out_dir_path), exist_ok=True)
+
+    prng = get_prng(args)
+    for dim in dims:
+        for nnz_percent in nnz_percents:
+            print("Generating data for " + str(dim) + " x " + str(nnz_percent) + "...")
+            t1_path = os.path.join(out_dir_path, "B_" + str(dim) + "_" + str(nnz_percent) + ".tns")
+            t2_path = os.path.join(out_dir_path, "C_" + str(dim) + "_" + str(nnz_percent) + ".tns")
+            with open(t1_path, "w+") as ft1:
+                with open(t2_path, "w+") as ft2:
+                    for i in range(dim):
+                        for j in range(dim):
+                                rand1 = prng.random(1)[0]
+                                if rand1 <= nnz_percent:
+                                    ft1.write(str(i) + " " + str(j) + " 1.0\n")
+                                if prng.random(1)[0] <= nnz_percent:
+                                    ft2.write(str(i) + " " + str(j) + " 1.0\n")
+
+def gen_block_4t(dims, nnz_percents, args):
+    assert args.bench == "blockSp"
+
+    out_dir_path = os.path.join(args.out_dir, args.bench)
+    os.makedirs(Path(out_dir_path), exist_ok=True)
+
+    prng = get_prng(args)
+    for dim in dims:
+        for nnz_percent in nnz_percents:
+            print("Generating data for " + str(dim) + " x " + str(nnz_percent) + "...")
+            t1_path = os.path.join(out_dir_path, "B_" + str(dim) + "_" + str(nnz_percent) + ".tns")
+            with open(t1_path, "w+") as ft1:
+                    for i in range(dim):
+                        for j in range(dim):
+                            rand1 = prng.random(1)[0]
+                            if rand1 <= nnz_percent:
+                                for k in range(dim):
+                                     for l in range(dim):
+                                          ft1.write(str(i) + " " + str(j) + " " + str(k) + " " + str(l) + " 1.0\n")
+                                
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate sparse data for Mosaic evaluation")
@@ -90,3 +142,8 @@ if __name__ == "__main__":
         gen_urand_mat(dims, nnz_percents, args)
     elif args.bench == "plus3t":
         gen_urand_3t(dims, nnz_percents, args)
+    elif args.bench == "blockSp":
+        gen_block_4t(dims, nnz_percents, args)
+    elif args.bench == "mmAdd":
+        gen_urand_2t(dims, nnz_percents, args)
+
