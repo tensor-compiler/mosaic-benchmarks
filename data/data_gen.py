@@ -33,8 +33,11 @@ def get_benchmark_ranges(bench_name):
         dim_range = list(range(100, 1001, 100))
         sp_range = [0.05, 0.1]
     elif bench_name == "mmAdd":
-        dim_range = list(range(100, 1001, 100))
+        dim_range = [200]
         sp_range = [.00625, .0125, .025, .05, .1, .2, .4, .8, 1]
+#    elif bench_name == "mmAdd":
+#        dim_range = list(range(100, 1001, 100))
+#        sp_range = [.00625, .0125, .025, .05, .1, .2, .4, .8, 1]
     else:
         raise NotImplementedError
     return dim_range, sp_range
