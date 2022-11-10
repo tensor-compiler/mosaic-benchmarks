@@ -1,0 +1,6 @@
+,real_time,run_name
+5,0.044960499508306384,bench_ttv_taco/20/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+13,0.057845503761200234,bench_ttv_taco/40/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+21,0.1023774966597557,bench_ttv_taco/60/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+29,0.1611694970051758,bench_ttv_taco/80/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+37,0.287555500108283,bench_ttv_taco/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time

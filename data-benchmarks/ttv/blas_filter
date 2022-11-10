@@ -1,0 +1,6 @@
+,real_time,run_name
+1,0.09216549733537249,bench_ttv_blas/20/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+5,0.1623069983907044,bench_ttv_blas/40/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+9,0.3379085028427653,bench_ttv_blas/60/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+13,0.8258620073320344,bench_ttv_blas/80/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+17,1.210924001497915,bench_ttv_blas/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time
