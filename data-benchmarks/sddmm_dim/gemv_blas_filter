@@ -1,0 +1,11 @@
+,real_time,run_name
+1,1.4069839999137912,bench_sddmm_gemv_blas/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+9,88.86692349733494,bench_sddmm_gemv_blas/300/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+17,537.0966664995649,bench_sddmm_gemv_blas/500/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+25,1353.4462575007637,bench_sddmm_gemv_blas/700/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+33,3427.4805185013975,bench_sddmm_gemv_blas/900/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+41,20666.608341001847,bench_sddmm_gemv_blas/1100/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+49,34216.32046900049,bench_sddmm_gemv_blas/1300/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+57,53511.97493899963,bench_sddmm_gemv_blas/1500/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+65,78113.49010250342,bench_sddmm_gemv_blas/1700/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+73,108837.41851100058,bench_sddmm_gemv_blas/1900/min_warmup_time:10.000/iterations:1/repeats:10/real_time

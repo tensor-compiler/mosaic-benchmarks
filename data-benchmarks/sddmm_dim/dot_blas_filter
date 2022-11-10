@@ -1,0 +1,11 @@
+,real_time,run_name
+1,0.7035990001895698,bench_sddmm_dot_blas/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+9,15.289971001038793,bench_sddmm_dot_blas/300/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+17,103.90014500080724,bench_sddmm_dot_blas/500/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+25,353.79307299990614,bench_sddmm_dot_blas/700/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+33,771.8666525015578,bench_sddmm_dot_blas/900/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+41,1412.2669650005264,bench_sddmm_dot_blas/1100/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+49,3527.7436374999525,bench_sddmm_dot_blas/1300/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+57,11494.909714001551,bench_sddmm_dot_blas/1500/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+65,33472.18399599842,bench_sddmm_dot_blas/1700/min_warmup_time:10.000/iterations:1/repeats:10/real_time
+73,68791.15183500107,bench_sddmm_dot_blas/1900/min_warmup_time:10.000/iterations:1/repeats:10/real_time
