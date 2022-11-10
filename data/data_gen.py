@@ -6,6 +6,17 @@ import random
 
 import os
 from pathlib import Path
+    
+def shiftLastMode(tensor):
+    dok = scipy.sparse.dok_matrix(tensor)
+    result = scipy.sparse.dok_matrix(tensor.shape)
+    for coord, val in dok.items():
+        newCoord = list(coord[:])
+        newCoord[-1] = (newCoord[-1] + 1) % tensor.shape[-1]
+        # result[tuple(newCoord)] = val
+        # TODO (rohany): Temporarily use a constant as the value.
+        result[tuple(newCoord)] = val
+    return scipy.sparse.coo_matrix(result)
 
 
 def get_prng(args):
@@ -43,7 +54,7 @@ def get_benchmark_ranges(bench_name):
     return dim_range, sp_range
 
 
-def gen_urand_mat(dims, nnz_percents, args):
+def gen_urand_mat(dims, nnz_percents, args, other=False):
     out_dir_path = os.path.join(args.out_dir, args.bench)
     os.makedirs(Path(out_dir_path), exist_ok=True)
 
@@ -54,6 +65,10 @@ def gen_urand_mat(dims, nnz_percents, args):
             mat = scipy.sparse.random(dim, dim, density=nnz_percent, random_state=prng, data_rvs=np.ones)
             path = os.path.join(out_dir_path, "B_" + str(dim) + "_" + str(nnz_percent) + ".mtx")
             scipy.io.mmwrite(path, mat)
+            if other:
+                path_other = os.path.join(out_dir_path, "C_" + str(dim) + "_" + str(nnz_percent) + ".mtx")
+                mat_other = shiftLastMode(mat)
+                scipy.io.mmwrite(path_other, mat_other)
 
 
 def gen_urand_3t(dims, nnz_percents, args):
@@ -148,5 +163,5 @@ if __name__ == "__main__":
     elif args.bench == "blockSp":
         gen_block_4t(dims, nnz_percents, args)
     elif args.bench == "mmAdd":
-        gen_urand_2t(dims, nnz_percents, args)
+        gen_urand_mat(dims, nnz_percents, args, other=True)
 
