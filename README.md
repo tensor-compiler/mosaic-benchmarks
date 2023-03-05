@@ -1,2 +1,2 @@
 # mosaic
-Mosaic compiler and benchmarking
+Mosaic compiler benchmarking. For compiler code, refer to [mosaic](https://github.com/manya-bansal/mosaic).
