@@ -2,7 +2,7 @@
   "context": {
     "date": "2022-11-06T20:57:03+00:00",
     "host_name": "ip-172-31-32-166",
-    "executable": "/home/ubuntu/taco-interoperable/build/bin/./taco-bench",
+    "executable": "/home/reviewer/taco-interoperable/build/bin/./taco-bench",
     "num_cpus": 4,
     "mhz_per_cpu": 2500,
     "cpu_scaling_enabled": false,

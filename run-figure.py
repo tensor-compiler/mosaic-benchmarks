@@ -45,7 +45,7 @@ def generate_dim_plot(name, directory, systems, expr, start, interval, stardust=
             result = pd.merge(result, df, on='dimension', how='outer')
         
     if stardust is not None:
-        data = pd.read_csv("../stardust-runs/spmv_plus2.csv")
+        data = pd.read_csv(os.getenv("MOSAIC_DIR") + "/mosaic-benchmarks/stardust-runs/spmv_plus2.csv")
         if stardust == "SpMV":
             df = pd.DataFrame(data[["app", "cycles", "dim_0_2"]])
             df.rename(columns = {'dim_0_2': f'dimension'}, inplace = True)
@@ -109,6 +109,8 @@ def generate_dim_plot(name, directory, systems, expr, start, interval, stardust=
 
 
 def generate_sparsity_plots(name, directory, systems, expr, sparse, stardust=None, unit="us"):
+
+    print(stardust)
     
     result = None
     
@@ -125,7 +127,7 @@ def generate_sparsity_plots(name, directory, systems, expr, sparse, stardust=Non
             result = pd.merge(result, df, on='sparisty', how='outer')
     
     if stardust is not None:
-        data = pd.read_csv("../stardust-runs/spmv_plus2.csv")
+        data = pd.read_csv(os.getenv("MOSAIC_DIR") + "/stardust-runs/spmv_plus2.csv")
         if stardust == "SpMV":
             df = pd.DataFrame(data[["app", "cycles", "dataset"]])
             df.rename(columns = {'dim_0_2': f'dimension'}, inplace = True)
@@ -183,13 +185,24 @@ if __name__ == "__main__":
     parser.add_argument("--type", type=str, default="", help="Which type of plot to generate")
     parser.add_argument('--systems', type=str, default="")
     parser.add_argument('--sparsity', type=str, default="")
+    parser.add_argument('--stardust', type=str, default="")
     args = parser.parse_args()
 
+    print(args.stardust)
+    
     if args.type == "vary_sparse":
-        generate_sparsity_plots(args.name, args.data_dir, args.systems.split(','),\
+        if (args.stardust == "Plus2CSR"):
+            generate_sparsity_plots(args.name, args.data_dir, args.systems.split(','),\
+                                args.name, [float(item) for item in args.sparsity.split(',')], args.stardust)
+        else: 
+            generate_sparsity_plots(args.name, args.data_dir, args.systems.split(','),\
                                 args.name, [float(item) for item in args.sparsity.split(',')])
     elif args.type == "vary_dim":
-        generate_dim_plot(args.name, args.data_dir, args.systems.split(','), args.name,\
+        if (args.stardust == "SpMV"):
+            generate_dim_plot(args.name, args.data_dir, args.systems.split(','), args.name,\
+                    args.start_dim, args.step_dim, args.stardust)
+        else:
+            generate_dim_plot(args.name, args.data_dir, args.systems.split(','), args.name,\
                     args.start_dim, args.step_dim)
     else:
         print("Type can only be of two types, vary_sparse and vary_dim")
