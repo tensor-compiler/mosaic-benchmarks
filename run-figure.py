@@ -45,7 +45,7 @@ def generate_dim_plot(name, directory, systems, expr, start, interval, stardust=
             result = pd.merge(result, df, on='dimension', how='outer')
         
     if stardust is not None:
-        data = pd.read_csv(os.getenv("MOSAIC_DIR") + "/mosaic-benchmarks/stardust-runs/spmv_plus2.csv")
+        data = pd.read_csv(os.getenv("PATH_TO_MOSAIC_ARTIFACT") + "/mosaic-benchmarks/stardust-runs/spmv_plus2.csv")
         if stardust == "SpMV":
             df = pd.DataFrame(data[["app", "cycles", "dim_0_2"]])
             df.rename(columns = {'dim_0_2': f'dimension'}, inplace = True)
@@ -127,7 +127,7 @@ def generate_sparsity_plots(name, directory, systems, expr, sparse, stardust=Non
             result = pd.merge(result, df, on='sparisty', how='outer')
     
     if stardust is not None:
-        data = pd.read_csv(os.getenv("MOSAIC_DIR") + "/stardust-runs/spmv_plus2.csv")
+        data = pd.read_csv(os.getenv("PATH_TO_MOSAIC_ARTIFACT") + "/mosaic-benchmarks/stardust-runs/spmv_plus2.csv")
         if stardust == "SpMV":
             df = pd.DataFrame(data[["app", "cycles", "dataset"]])
             df.rename(columns = {'dim_0_2': f'dimension'}, inplace = True)
