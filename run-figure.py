@@ -12,17 +12,17 @@ colors = {"tblis" : "olive", "gsl" : "green", "blas" : "red", "taco" : "blue", "
           "dot_blas" : "gold", "dot_gsl" : "grey", "gemv_blas" : "purple", "gemv_gsl" : "pink", "mkl" :"black", "cuda":"green",\
          "dot_mkl" : "silver", "gemv_mkl" : "yellow", "stardust":"orange",
          "taco_csr" : "green", "taco_coo" : "red", "row" : "olive", "col" : "green", "block" : "red", 
-         "block_diagonal" : "blue", "random" : "cyan"}
+         "block_diagonal" : "blue", "random" : "cyan", "bug_mkl":"purple"}
 
 markers = {"tblis" : "o", "gsl" : "p", "blas" : "*", "taco" : ".", "gsl_tensor" : ".", \
           "dot_blas" : ".", "dot_gsl" : ".", "gemv_blas" : ".", "gemv_gsl" : "p", "mkl" :"v", "cuda":"s",\
          "dot_mkl" : ".", "gemv_mkl" : ".", "stardust":"1", "taco_coo" : "p", "taco_csr" : ".", \
-          "row" : "o", "col" : "p", "random" : "*", "block" : ".", "block_diagonal" : "."}
+          "row" : "o", "col" : "p", "random" : "*", "block" : ".", "block_diagonal" : ".", "bug_mkl": "."}
                       
 linestyles = {"tblis" : "-", "gsl" : "-", "blas" : "-", "taco" : "-", "gsl_tensor" : "-", \
           "dot_blas" : "-", "dot_gsl" : "-", "gemv_blas" : "-", "gemv_gsl" : "-", "mkl" :"--", "cuda":"-",\
          "dot_mkl" : "-", "gemv_mkl" : "-", "stardust":"-", "taco_coo" : "-", "taco_csr" : "--",\
-           "row" : "-", "col" : "-", "block" : "-", "block_diagonal" : "-", "random" : "-"  }
+           "row" : "-", "col" : "-", "block" : "-", "block_diagonal" : "-", "random" : "-", "bug_mkl":"-" }
 
 
 def generate_dim_plot(name, directory, systems, expr, start, interval, stardust=None, filtered=None, unit="us"):
