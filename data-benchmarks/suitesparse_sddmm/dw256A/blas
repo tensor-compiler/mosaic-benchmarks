@@ -1,10 +1,10 @@
 {
   "context": {
-    "date": "2023-02-08T05:25:23+00:00",
+    "date": "2023-03-13T21:28:54+00:00",
     "host_name": "ip-172-31-32-166",
-    "executable": "/home/reviewer/taco-interoperable/build/bin/./taco-bench",
+    "executable": "/home/ubuntu/taco-interoperable/build/bin/./taco-bench",
     "num_cpus": 4,
-    "mhz_per_cpu": 3100,
+    "mhz_per_cpu": 2500,
     "cpu_scaling_enabled": false,
     "caches": [
       {
@@ -32,7 +32,7 @@
         "num_sharing": 4
       }
     ],
-    "load_avg": [0.475098,0.402832,0.274902],
+    "load_avg": [0.3125,0.0791016,0.0258789],
     "library_build_type": "release"
   },
   "benchmarks": [
@@ -47,8 +47,8 @@
       "aggregate_name": "mean",
       "aggregate_unit": "time",
       "iterations": 10,
-      "real_time": 4.5867424982134262e+00,
-      "cpu_time": 4.5864211000000008e+00,
+      "real_time": 4.1497988000628538e+00,
+      "cpu_time": 4.1482633999999745e+00,
       "time_unit": "ms"
     },
     {
@@ -62,8 +62,8 @@
       "aggregate_name": "median",
       "aggregate_unit": "time",
       "iterations": 10,
-      "real_time": 4.2126794978685211e+00,
-      "cpu_time": 4.2124084999999862e+00,
+      "real_time": 3.8724030000594212e+00,
+      "cpu_time": 3.8710854999999547e+00,
       "time_unit": "ms"
     },
     {
@@ -77,8 +77,8 @@
       "aggregate_name": "stddev",
       "aggregate_unit": "time",
       "iterations": 10,
-      "real_time": 1.1779645152102880e+00,
-      "cpu_time": 1.1777890495928207e+00,
+      "real_time": 8.8712758832379635e-01,
+      "cpu_time": 8.8729376051893583e-01,
       "time_unit": "ms"
     },
     {
@@ -92,8 +92,8 @@
       "aggregate_name": "cv",
       "aggregate_unit": "percentage",
       "iterations": 10,
-      "real_time": 2.5681941283364285e-01,
-      "cpu_time": 2.5679915208675896e-01,
+      "real_time": 2.1377604820512253e-01,
+      "cpu_time": 2.1389523156098073e-01,
       "time_unit": "ms"
     }
   ]
