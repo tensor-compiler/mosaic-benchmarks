@@ -1,10 +1,10 @@
 {
   "context": {
-    "date": "2023-03-13T19:26:43+00:00",
+    "date": "2023-03-13T18:35:56+00:00",
     "host_name": "ip-172-31-32-166",
     "executable": "/home/ubuntu/taco-interoperable/build/bin/./taco-bench",
     "num_cpus": 4,
-    "mhz_per_cpu": 2500,
+    "mhz_per_cpu": 3101,
     "cpu_scaling_enabled": false,
     "caches": [
       {
@@ -32,7 +32,7 @@
         "num_sharing": 4
       }
     ],
-    "load_avg": [0.0727539,0.338867,0.648926],
+    "load_avg": [0.154785,0.395996,0.351562],
     "library_build_type": "release"
   },
   "benchmarks": [
@@ -47,8 +47,8 @@
       "aggregate_name": "mean",
       "aggregate_unit": "time",
       "iterations": 10,
-      "real_time": 3.3785270535000564e+03,
-      "cpu_time": 3.3758868454999997e+03,
+      "real_time": 3.3540444789000162e+03,
+      "cpu_time": 3.3515039771999996e+03,
       "time_unit": "ms"
     },
     {
@@ -62,8 +62,8 @@
       "aggregate_name": "median",
       "aggregate_unit": "time",
       "iterations": 10,
-      "real_time": 3.3753309430001086e+03,
-      "cpu_time": 3.3751373415000003e+03,
+      "real_time": 3.3515812200000137e+03,
+      "cpu_time": 3.3514064245000000e+03,
       "time_unit": "ms"
     },
     {
@@ -77,13 +77,13 @@
       "aggregate_name": "stddev",
       "aggregate_unit": "time",
       "iterations": 10,
-      "real_time": 1.2212864409447057e+01,
-      "cpu_time": 8.8545101636238179e+00,
+      "real_time": 1.0540232037667533e+01,
+      "cpu_time": 4.2248427907650443e+00,
       "time_unit": "ms"
     },
     {
       "name": "bench_suitesparse_sddmm_tblis/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time_cv",
-      "family_index": 0, 
+      "family_index": 0,
       "per_family_instance_index": 0,
       "run_name": "bench_suitesparse_sddmm_tblis/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time",
       "run_type": "aggregate",
@@ -92,8 +92,8 @@
       "aggregate_name": "cv",
       "aggregate_unit": "percentage",
       "iterations": 10,
-      "real_time": 3.6148487835238386e-03,
-      "cpu_time": 2.6228693581441358e-03,
+      "real_time": 3.1425439060141142e-03,
+      "cpu_time": 1.2605811658008750e-03,
       "time_unit": "ms"
     }
   ]
