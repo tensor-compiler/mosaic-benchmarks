@@ -2,44 +2,37 @@ import argparse
 import json
 import pandas as pd
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import csv
 
 import os
 from pathlib import Path
 
-matplotlib.rcParams['pdf.fonttype'] = 42
-matplotlib.rcParams['ps.fonttype'] = 42
-
 colors = {"tblis" : "olive", "gsl" : "green", "blas" : "red", "taco" : "blue", "gsl_tensor" : "cyan", \
           "dot_blas" : "gold", "dot_gsl" : "grey", "gemv_blas" : "purple", "gemv_gsl" : "pink", "mkl" :"black", "cuda":"green",\
          "dot_mkl" : "silver", "gemv_mkl" : "yellow", "stardust":"orange",
          "taco_csr" : "green", "taco_coo" : "red", "row" : "olive", "col" : "green", "block" : "red", 
-         "block_diagonal" : "blue", "random" : "cyan", "bug_mkl":"purple", "bug_gsl":"pink"}
+         "block_diagonal" : "blue", "random" : "cyan", "bug_mkl":"purple"}
 
 markers = {"tblis" : "o", "gsl" : "p", "blas" : "*", "taco" : ".", "gsl_tensor" : ".", \
           "dot_blas" : ".", "dot_gsl" : ".", "gemv_blas" : ".", "gemv_gsl" : "p", "mkl" :"v", "cuda":"s",\
          "dot_mkl" : ".", "gemv_mkl" : ".", "stardust":"1", "taco_coo" : "p", "taco_csr" : ".", \
-          "row" : "o", "col" : "p", "random" : "*", "block" : ".", "block_diagonal" : ".", "bug_mkl": ".", "bug_gsl":"s"}
+          "row" : "o", "col" : "p", "random" : "*", "block" : ".", "block_diagonal" : ".", "bug_mkl": "."}
                       
 linestyles = {"tblis" : "-", "gsl" : "-", "blas" : "-", "taco" : "-", "gsl_tensor" : "-", \
           "dot_blas" : "-", "dot_gsl" : "-", "gemv_blas" : "-", "gemv_gsl" : "-", "mkl" :"--", "cuda":"-",\
          "dot_mkl" : "-", "gemv_mkl" : "-", "stardust":"-", "taco_coo" : "-", "taco_csr" : "--",\
-           "row" : "-", "col" : "-", "block" : "-", "block_diagonal" : "-", "random" : "-", "bug_mkl":"-", "bug_gsl":"--" }
+           "row" : "-", "col" : "-", "block" : "-", "block_diagonal" : "-", "random" : "-", "bug_mkl":"-" }
 
 
-def generate_dim_plot(name, directory, systems, expr, start, interval, stardust=None, filtered=None, unit="us", svg=False):
+def generate_dim_plot(name, directory, systems, expr, start, interval, stardust=None, filtered=None, unit="us"):
     
     result = None
     
     for system in systems:
         data = json.load(open(f'{directory}/{system}'))
         df = pd.DataFrame(data["benchmarks"])
-        try:
-            df = df[df['aggregate_name'] == "median"]['real_time']
-        except:
-            df = df['real_time']
+        df = df[df['aggregate_name'] == "median"]['real_time']
         df = df.reset_index(drop=True)
         df = df.rename_axis('dimension').reset_index()
         df['dimension'] = df['dimension']*interval + start
@@ -113,11 +106,9 @@ def generate_dim_plot(name, directory, systems, expr, start, interval, stardust=
     plt.xlabel('Dimension')
     
     plt.savefig(f'{directory}/{name}.pdf', format="pdf")
-    if svg:
-        plt.savefig(f'{directory}/{name}.svg', format="svg")
 
 
-def generate_sparsity_plots(name, directory, systems, expr, sparse, stardust=None, unit="us", svg=False):
+def generate_sparsity_plots(name, directory, systems, expr, sparse, stardust=None, unit="us"):
 
     print(stardust)
     
@@ -126,10 +117,7 @@ def generate_sparsity_plots(name, directory, systems, expr, sparse, stardust=Non
     for system in systems:
         data = json.load(open(f'{directory}/{system}'))
         df = pd.DataFrame(data["benchmarks"])
-        try:
-            df = df[df['aggregate_name'] == "median"]['real_time']
-        except:
-            df = df['real_time']
+        df = df[df['aggregate_name'] == "median"]['real_time']
         df = df.reset_index(drop=True)
         df = df.rename_axis('sparisty').reset_index()
         df.rename(columns = {'real_time': f'{system}_real_time'}, inplace = True)
@@ -188,9 +176,7 @@ def generate_sparsity_plots(name, directory, systems, expr, sparse, stardust=Non
     plt.xlabel('sparisty')
     
     plt.savefig(f'{directory}/{name}.pdf', format="pdf")
-    if svg:
-        plt.savefig(f'{directory}/{name}.svg', format="svg")
-     
+    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate Figures from Data")
     parser.add_argument("--data_dir", type=str, default="./", help="Where To Find the Data")
@@ -204,7 +190,6 @@ if __name__ == "__main__":
     parser.add_argument('--sparsity', type=str, default="")
     parser.add_argument('--stardust', type=str, default="")
     parser.add_argument('--unit', type=str, default="us")
-    parser.add_argument('--svg', action='store_true')
 
     args = parser.parse_args()
 
@@ -213,18 +198,16 @@ if __name__ == "__main__":
     if args.type == "vary_sparse":
         if (args.stardust == "Plus2CSR"):
             generate_sparsity_plots(args.name, args.data_dir, args.systems.split(','),\
-                                args.name, [float(item) for item in args.sparsity.split(',')],\
-                                args.stardust, args.unit, args.svg)
+                                args.name, [float(item) for item in args.sparsity.split(',')], args.stardust, args.unit)
         else: 
             generate_sparsity_plots(args.name, args.data_dir, args.systems.split(','),\
-                                args.name, [float(item) for item in args.sparsity.split(',')],\
-                                None, args.unit, args.svg)
+                                args.name, [float(item) for item in args.sparsity.split(',')], None, args.unit)
     elif args.type == "vary_dim":
         if (args.stardust == "SpMV"):
             generate_dim_plot(args.name, args.data_dir, args.systems.split(','), args.name,\
-                    args.start_dim, args.step_dim, args.stardust, None, args.unit, args.svg)
+                    args.start_dim, args.step_dim, args.stardust, None, args.unit)
         else:
             generate_dim_plot(args.name, args.data_dir, args.systems.split(','), args.name,\
-                    args.start_dim, args.step_dim, None, None, args.unit, args.svg)
+                    args.start_dim, args.step_dim, None, None, args.unit)
     else:
         print("Type can only be of two types, vary_sparse and vary_dim")
