@@ -1,0 +1,100 @@
+{
+  "context": {
+    "date": "2023-04-07T22:03:53+00:00",
+    "host_name": "ip-172-31-11-75",
+    "executable": "/home/reviewer//mosaic/build/bin/./taco-bench",
+    "num_cpus": 4,
+    "mhz_per_cpu": 3100,
+    "cpu_scaling_enabled": false,
+    "caches": [
+      {
+        "type": "Data",
+        "level": 1,
+        "size": 32768,
+        "num_sharing": 2
+      },
+      {
+        "type": "Instruction",
+        "level": 1,
+        "size": 32768,
+        "num_sharing": 2
+      },
+      {
+        "type": "Unified",
+        "level": 2,
+        "size": 1048576,
+        "num_sharing": 2
+      },
+      {
+        "type": "Unified",
+        "level": 3,
+        "size": 37486592,
+        "num_sharing": 4
+      }
+    ],
+    "load_avg": [0.709961,0.875,0.672852],
+    "library_build_type": "release"
+  },
+  "benchmarks": [
+    {
+      "name": "bench_suitesparse_sddmm_mkl/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time_mean",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "bench_suitesparse_sddmm_mkl/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time",
+      "run_type": "aggregate",
+      "repetitions": 10,
+      "threads": 1,
+      "aggregate_name": "mean",
+      "aggregate_unit": "time",
+      "iterations": 10,
+      "real_time": 2.7634750001652719e-01,
+      "cpu_time": 2.7506329999999474e-01,
+      "time_unit": "ms"
+    },
+    {
+      "name": "bench_suitesparse_sddmm_mkl/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time_median",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "bench_suitesparse_sddmm_mkl/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time",
+      "run_type": "aggregate",
+      "repetitions": 10,
+      "threads": 1,
+      "aggregate_name": "median",
+      "aggregate_unit": "time",
+      "iterations": 10,
+      "real_time": 2.1724499902120442e-02,
+      "cpu_time": 2.0264000000005944e-02,
+      "time_unit": "ms"
+    },
+    {
+      "name": "bench_suitesparse_sddmm_mkl/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time_stddev",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "bench_suitesparse_sddmm_mkl/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time",
+      "run_type": "aggregate",
+      "repetitions": 10,
+      "threads": 1,
+      "aggregate_name": "stddev",
+      "aggregate_unit": "time",
+      "iterations": 10,
+      "real_time": 8.0509483616110189e-01,
+      "cpu_time": 8.0527195096922877e-01,
+      "time_unit": "ms"
+    },
+    {
+      "name": "bench_suitesparse_sddmm_mkl/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time_cv",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "bench_suitesparse_sddmm_mkl/100/min_warmup_time:10.000/iterations:1/repeats:10/real_time",
+      "run_type": "aggregate",
+      "repetitions": 10,
+      "threads": 1,
+      "aggregate_name": "cv",
+      "aggregate_unit": "percentage",
+      "iterations": 10,
+      "real_time": 2.9133422090409806e+00,
+      "cpu_time": 2.9275877624141216e+00,
+      "time_unit": "ms"
+    }
+  ]
+}
